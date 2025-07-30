@@ -13,7 +13,9 @@ class ExchangeController extends Controller
     {
         $body = $req->getContent();
         $doc = new DOMDocument();
-        $doc->loadXML($body);
+        if ($body) {
+            $doc->loadXML($body);
+        }
         $response_schema = "https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a";
 
         $response_schemas = $doc->getElementsByTagName("AcceptableResponseSchema");
