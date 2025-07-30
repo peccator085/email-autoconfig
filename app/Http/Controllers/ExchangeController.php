@@ -11,6 +11,12 @@ class ExchangeController extends Controller
     //
     public function __invoke(Request $req)
     {
+        if ($req->input("Protocol")) {
+            if ($req->input("Protocol") === "EWS") {
+                abort(404);
+            }
+            abort(404);
+        }
         $body = $req->getContent();
         $doc = new DOMDocument();
         if ($body) {
@@ -23,14 +29,15 @@ class ExchangeController extends Controller
             $response_schema = $response_schemas->item(0)->textContent;
         }
 
-        $email_address = "";
+        $email_address = "@freemail.dau.jp";
+        $domain = "freemail.dau.jp";
+        $user = "";
         $email_addresses = $doc->getElementsByTagName("EMailAddress");
         if (0 < $email_addresses->count()) {
             $email_address = $email_addresses->item(0)->textContent;
+            $domain = substr(strrchr($email_address, "@"), 1);
+            $user = substr($email_address, 0, strlen($email_address) - strlen($domain) - 1);
         }
-
-        $domain = substr(strrchr($email_address, "@"), 1);
-        $user = substr($email_address, 0, strlen($email_address) - strlen($domain) - 1);
         Log::info("configs", [config("email_autoconfig")]);
         Log::info("domain", [$domain]);
         Log::info("user", [$user]);
