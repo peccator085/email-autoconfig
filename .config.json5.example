@@ -1,0 +1,17 @@
+{
+    "example.com": {
+        IMAP: {
+            HOST: "imap.example.com",
+            PORT: 995,
+            USERNAME_TYPE: "EMAIL",
+            ENCRYPTION: "SSL",
+        },
+        SMTP: {
+            HOST: "smtp.example.com",
+            PORT: 465,
+            USERNAME_TYPE: "EMAIL",
+            ENCRYPTION: "SSL",
+        }
+    }
+}
+
