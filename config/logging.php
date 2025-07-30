@@ -36,6 +36,10 @@ return [
         'trace' => env('LOG_DEPRECATIONS_TRACE', false),
     ],
 
+    'request' => [
+        'enable' => env('LOG_REQUEST_ENABLE', false),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Log Channels
