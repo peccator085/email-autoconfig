@@ -7,5 +7,5 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
 
-Route::post("/autodiscover/autodiscover.xml", 'ExchangeController');
-Route::post("/Autodiscover/Autodiscover.xml", 'ExchangeController');
+Route::post("/autodiscover/autodiscover.xml", ExchangeController::class);
+Route::post("/Autodiscover/Autodiscover.xml", ExchangeController::class);
